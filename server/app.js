@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const responses = require('./src/responses/loader');
 const router = require('./src/router');
 
+// Init models
+require('./src/models/loader');
+
 // Uses
 const app = express();
 app.use(cors());
