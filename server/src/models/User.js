@@ -1,15 +1,36 @@
 const { DataTypes, Model } = require('sequelize');
+const bcrypt = require('bcryptjs');
 
 class User extends Model {
   static init(sequelize) {
     return super.init({
       admin: DataTypes.BOOLEAN,
+      company: DataTypes.INTEGER,
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
-      email: DataTypes.STRING
+      email: DataTypes.STRING,
+      password: DataTypes.TEXT,
     }, {
       sequelize,
-      tableName: 'user'
+      tableName: 'user',
+      defaultScope: {
+        attributes: {
+          exclude: ['password']
+        }
+      },
+    });
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Company, {
+      foreignKey: { allowNull: false, name: 'company' }
+    });
+  }
+
+  static hooks() {
+    this.beforeCreate(async (user) => {
+      const salt = bcrypt.genSaltSync(10);
+      user.password = bcrypt.hashSync(user.password, salt);
     });
   }
 }
