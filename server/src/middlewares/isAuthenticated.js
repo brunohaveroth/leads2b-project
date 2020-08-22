@@ -5,7 +5,7 @@
 **/
 
 const JwtService = require('../services/JWT');
-const { User } = require('../loaders/models');
+const { User } = require('../models/loader');
 
 function isAuthenticated(req, res, next) {
   let token;
