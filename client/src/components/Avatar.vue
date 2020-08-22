@@ -11,7 +11,8 @@ export default {
 
   computed: {
     image() {
-      const code = this.item ? this.item.firstName + this.item.lastName : 'default';
+      const item = this.item || {};
+      const code = item.firstName + item.lastName + item.email;
       return `https://api.adorable.io/avatars/70/${code}.png`;
     }
   }

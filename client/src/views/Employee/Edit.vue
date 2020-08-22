@@ -8,10 +8,10 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <div class="row">
-            <div class="col-md-6 d-flex align-items-center">
+            <div class="col-md-6 d-flex align-items-start">
               <Avatar class="avatar-7 flex-shrink-0" :item="employee"/>
 
-              <div class="ml-3">
+              <div class="ml-4">
                 <div class="form-group mb-3">
                   <label>Nome</label>
                   <input class="form-control" type="text" placeholder="Nome" v-model="employee.firstName">
