@@ -5,7 +5,7 @@
         <h6 class="mb-0 font-weight-bold">Dados Gerais</h6>
 
         <div class="ml-auto">
-          <router-link :to="{ name: 'EmployeeEdit', params: { id: project.id }}" class="btn btn-link py-0">
+          <router-link :to="{ name: 'ProjectEdit', params: { id: project.id }}" class="btn btn-link py-0">
             <font-awesome-icon icon="edit" />
           </router-link>
 
@@ -24,12 +24,16 @@
 
     <div class="card border-0 border-top">
       <div class="card-header d-flex align-items-center border-0 py-3">
-        <router-link class="mb-0 font-weight-bold mr-4" :to="{ name: 'ProjectShowSkill', params: { id: project.id }}">
+        <router-link class="mb-0 font-weight-bold mr-4" :to="{ name: 'ProjectShowSkill'}">
           Competências necessárias
         </router-link>
 
-        <router-link class="mb-0 font-weight-bold mx-4" :to="{ name: 'ProjectShowEmployee', params: { id: project.id }}">
+        <router-link class="mb-0 font-weight-bold mx-4" :to="{ name: 'ProjectShowEmployee'}">
           Participantes
+        </router-link>
+
+        <router-link class="mb-0 font-weight-bold mx-4" :to="{ name: 'ProjectShowAddEmployee'}">
+          Sugestões
         </router-link>
       </div>
 

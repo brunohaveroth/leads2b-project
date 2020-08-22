@@ -10,7 +10,8 @@ export default {
     ...state,
 
     modelName: 'project',
-    participants: []
+    participants: [],
+    suggestions: []
   },
 
   getters: {
@@ -18,6 +19,10 @@ export default {
 
     getParticipants: (state) =>  {
       return state.participants;
+    },
+
+    getSuggestions: (state) =>  {
+      return state.suggestions;
     }
   },
 
@@ -26,6 +31,16 @@ export default {
 
     setParticipants (state, records) {
       state.participants = records;
+    },
+
+    setSuggestions (state, records) {
+      state.suggestions = records;
+    },
+
+    removeParticipant (state, record) {
+      state.participants = state.participants.filter((o)=> {
+        return o.employee !== record.employee;
+      });
     }
   },
 
@@ -36,6 +51,21 @@ export default {
       let response = await axios.get(`/project/${projectId}/participants`);
       commit('setParticipants', response.data);
       return response;
+    },
+
+    async findSuggestions ({ commit }, projectId) {
+      let response = await axios.get(`/project/${projectId}/suggestions`);
+      commit('setSuggestions', response.data);
+      return response;
+    },
+
+    addEmployee (context, data) {
+      return axios.post(`/project/addEmployee`, data);
+    },
+
+    async removeEmployee ({ commit }, params) {
+      await axios.delete(`/project/${params.project}/removeEmployee/${params.employee}`);
+      commit('removeParticipant', params);
     },
   }
 }

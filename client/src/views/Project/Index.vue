@@ -5,8 +5,7 @@
         <h6 class="font-weight-bold text-primary mb-0">Projetos</h6>
 
         <div class="ml-auto d-flex align-items-center">
-          <input type="text" class="form-control form-control-sm" placeholder="Buscar projetos" value="">
-          <router-link to="/employee/create" class="btn btn-primary btn-sm flex-shrink-0 ml-3">Adicionar Colaborador</router-link>
+          <router-link to="/employee/create" class="btn btn-primary btn-sm flex-shrink-0 ml-3">Adicionar Projeto</router-link>
         </div>
       </div>
 

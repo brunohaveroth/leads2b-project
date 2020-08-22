@@ -13,30 +13,30 @@ const ProjectSkillController = {
   },
 
   async findOne (req, res) {
-    const employeeSkill = await ProjectSkill.findOne({
+    const projectSkill = await ProjectSkill.findOne({
       where: {
         id: req.params.id,
         company: req.user.company
       }
     });
 
-    return res.ok(employeeSkill);
+    return res.ok(projectSkill);
   },
 
   async update (req, res) {
-    const employeeSkill = await ProjectSkill.findOne({
+    const projectSkill = await ProjectSkill.findOne({
       where: {
         id: req.params.id,
         company: req.user.company
       }
     });
 
-    employeeSkill.update({
+    projectSkill.update({
       ...req.body,
       company: req.user.company
     });
 
-    return res.ok(employeeSkill);
+    return res.ok(projectSkill);
   },
 
   async create (req, res) {

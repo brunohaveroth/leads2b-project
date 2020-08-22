@@ -1,8 +1,8 @@
 <template>
-  <div class="employee-show-index">
-    <ul class="list-group list-group-flush border-top">
-      <SkillItem v-for="item in skills" :key="item.id" v-bind:item="item" modelName="employeeSkill" />
-      <SkillAssociationForm v-if="isCreateNew" :toggleForm="toggleForm" modelName="employeeSkill" parentName="employee" />
+  <div class="employee-show-index border-top">
+    <ul class="list-group list-group-flush">
+      <SkillItem v-for="item in skills" :key="item.id" v-bind:item="item" modelName="projectSkill" />
+      <SkillAssociationForm v-if="isCreateNew" :toggleForm="toggleForm" modelName="projectSkill" parentName="project" />
 
       <button class="w-100 btn btn-link" @click="toggleForm" v-if="!isCreateNew">
         <font-awesome-icon icon="plus" class="text-muted" /> Adicionar Competência

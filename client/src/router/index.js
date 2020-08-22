@@ -12,8 +12,10 @@ import EmployeeCreate from '../views/Employee/Create.vue'
 import EmployeeShowSkill from '../views/Employee/Show/Skill.vue'
 import ProjectIndex from '../views/Project/Index.vue'
 import ProjectShow from '../views/Project/Show.vue'
+import ProjectEdit from '../views/Project/Edit.vue'
 import ProjectShowSkill from '../views/Project/Show/Skill.vue'
 import ProjectShowEmployee from '../views/Project/Show/Employee.vue'
+import ProjectShowAddEmployee from '../views/Project/Show/AddEmployee.vue'
 
 Vue.use(VueRouter)
 
@@ -65,6 +67,11 @@ const routes = [
     beforeEnter: authenticatedRoute,
     children: [
       {
+        path: 'edit/:id',
+        name: 'ProjectEdit',
+        component: ProjectEdit
+      },
+      {
         path: 'show/:id',
         name: 'ProjectShow',
         component: ProjectShow,
@@ -78,6 +85,11 @@ const routes = [
             path: 'participants',
             name: 'ProjectShowEmployee',
             component: ProjectShowEmployee
+          },
+          {
+            path: 'participants/add',
+            name: 'ProjectShowAddEmployee',
+            component: ProjectShowAddEmployee
           }
         ]
       }

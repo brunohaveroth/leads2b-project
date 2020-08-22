@@ -1,5 +1,5 @@
 <template>
-  <div class="project-show-employee">
+  <div class="project-show-employee border-top">
     <ul class="list-group list-group-flush">
       <li class="list-group-item d-flex align-items-center" v-for="item in participants" :key="item.id">
         <Avatar class="avatar-5" :item="item.Employee"/>
@@ -8,16 +8,14 @@
           <h6 class="font-weight-bold">{{item.Employee.firstName}} {{item.Employee.lastName}}</h6>
           <h6 class="mb-0">{{item.Employee.email || "Email não informado"}}</h6>
         </div>
+
+        <button type="button" class="btn btn-link text-danger btn-sm ml-auto" @click="remove(item)">
+          <font-awesome-icon icon="trash" />
+        </button>
       </li>
     </ul>
-    <!-- <ul class="list-group list-group-flush border-top">
-      <SkillItem v-for="item in skills" :key="item.id" v-bind:item="item" modelName="employeeSkill" />
-      <SkillAssociationForm v-if="isCreateNew" :toggleForm="toggleForm" modelName="employeeSkill" parentName="employee" />
 
-      <button class="w-100 btn btn-link" @click="toggleForm" v-if="!isCreateNew">
-        <font-awesome-icon icon="plus" class="text-muted" /> Adicionar Competência
-      </button>
-    </ul> -->
+    <router-link :to="{ name: 'ProjectShowAddEmployee'}" class="w-100 btn btn-link py-3">Adicionar Colaborador</router-link>
   </div>
 </template>
 
@@ -28,15 +26,9 @@ export default {
   components: {
     Avatar
   },
-  
+
   created () {
     this.fetchData();
-  },
-
-  data() {
-    return {
-      isCreateNew: null
-    };
   },
 
   computed: {
@@ -46,12 +38,27 @@ export default {
   },
 
   methods: {
-    toggleForm () {
-      this.isCreateNew = !this.isCreateNew;
-    },
-
     fetchData () {
       this.$store.dispatch('project/findParticipants', this.$route.params.id);
+    },
+
+    async remove(item) {
+      try {
+        await this.$store.dispatch(`project/removeEmployee`, {
+          project: item.project,
+          employee: item.employee
+        });
+
+        return this.$swal.fire({
+          icon: 'success',
+          title: 'Removido com sucesso'
+        });
+      } catch (e) {
+        return this.$swal.fire({
+          icon: 'error',
+          title: 'Falha ao remover'
+        });
+      }
     }
   },
 
