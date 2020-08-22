@@ -1,27 +1,34 @@
 <template>
-  <div class="employee-show-index">
-    <ul class="list-group list-group-flush border-top">
+  <div class="project-show-employee">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex align-items-center" v-for="item in participants" :key="item.id">
+        <Avatar class="avatar-5" :item="item.Employee"/>
+
+        <div class="ml-3">
+          <h6 class="font-weight-bold">{{item.Employee.firstName}} {{item.Employee.lastName}}</h6>
+          <h6 class="mb-0">{{item.Employee.email || "Email não informado"}}</h6>
+        </div>
+      </li>
+    </ul>
+    <!-- <ul class="list-group list-group-flush border-top">
       <SkillItem v-for="item in skills" :key="item.id" v-bind:item="item" modelName="employeeSkill" />
       <SkillAssociationForm v-if="isCreateNew" :toggleForm="toggleForm" modelName="employeeSkill" parentName="employee" />
 
       <button class="w-100 btn btn-link" @click="toggleForm" v-if="!isCreateNew">
         <font-awesome-icon icon="plus" class="text-muted" /> Adicionar Competência
       </button>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
-
 <script>
-import SkillItem from '@/components/SkillItem.vue'
-import SkillAssociationForm from '@/components/SkillAssociationForm.vue'
+import Avatar from '@/components/Avatar.vue'
 
 export default {
   components: {
-    SkillItem,
-    SkillAssociationForm
+    Avatar
   },
-
+  
   created () {
     this.fetchData();
   },
@@ -33,8 +40,8 @@ export default {
   },
 
   computed: {
-    skills () {
-      return this.$store.getters['projectSkill/getAll'];
+    participants () {
+      return this.$store.getters['project/getParticipants'];
     }
   },
 
@@ -44,7 +51,7 @@ export default {
     },
 
     fetchData () {
-      this.$store.dispatch('projectSkill/find', { project: this.$route.params.id });
+      this.$store.dispatch('project/findParticipants', this.$route.params.id);
     }
   },
 

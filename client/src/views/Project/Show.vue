@@ -22,7 +22,19 @@
       </ul>
     </div>
 
-    <router-view/>
+    <div class="card border-0 border-top">
+      <div class="card-header d-flex align-items-center border-0 py-3">
+        <router-link class="mb-0 font-weight-bold mr-4" :to="{ name: 'ProjectShowSkill', params: { id: project.id }}">
+          Competências necessárias
+        </router-link>
+
+        <router-link class="mb-0 font-weight-bold mx-4" :to="{ name: 'ProjectShowEmployee', params: { id: project.id }}">
+          Participantes
+        </router-link>
+      </div>
+
+      <router-view/>
+    </div>
   </div>
 </template>
 

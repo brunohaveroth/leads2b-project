@@ -38,6 +38,7 @@ router.delete('/employeeSkill/:id', [isAuthenticated], EmployeeSkillController.d
 // ProjectController
 router.get('/project', [isAuthenticated], ProjectController.find);
 router.post('/project', [isAuthenticated], ProjectController.create);
+router.get('/project/:id/participants', [isAuthenticated], ProjectController.participants);
 router.get('/project/:id', [isAuthenticated], ProjectController.findOne);
 router.put('/project/:id', [isAuthenticated], ProjectController.update);
 router.delete('/project/:id', [isAuthenticated], ProjectController.destroy);

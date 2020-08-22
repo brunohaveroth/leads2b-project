@@ -15,7 +15,7 @@
         </li>
 
         <li class="p-3 text-left">
-          <router-link to="/projects">
+          <router-link to="/project">
             Projetos
           </router-link>
         </li>

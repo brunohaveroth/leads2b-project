@@ -13,6 +13,7 @@ import EmployeeShowSkill from '../views/Employee/Show/Skill.vue'
 import ProjectIndex from '../views/Project/Index.vue'
 import ProjectShow from '../views/Project/Show.vue'
 import ProjectShowSkill from '../views/Project/Show/Skill.vue'
+import ProjectShowEmployee from '../views/Project/Show/Employee.vue'
 
 Vue.use(VueRouter)
 
@@ -72,6 +73,11 @@ const routes = [
             path: '',
             name: 'ProjectShowSkill',
             component: ProjectShowSkill
+          },
+          {
+            path: 'participants',
+            name: 'ProjectShowEmployee',
+            component: ProjectShowEmployee
           }
         ]
       }

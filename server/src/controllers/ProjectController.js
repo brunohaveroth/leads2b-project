@@ -1,4 +1,4 @@
-const { Project } = require('../models/loader');
+const { Employee, Project, ParticipantOnProject } = require('../models/loader');
 
 const ProjectController = {
   async find (req, res) {
@@ -55,6 +55,23 @@ const ProjectController = {
 
       return res.noContent();
     } catch(e) {
+      return res.badRequest(e);
+    }
+  },
+
+
+  async participants (req, res) {
+    try {
+      let participants = await ParticipantOnProject.findAll({
+        where: {
+          project: req.params.id
+        },
+        include: [ { model: Employee } ]
+      });
+      console.log('------', participants);
+      return res.ok(participants);
+    } catch(e) {
+      console.log(e);
       return res.badRequest(e);
     }
   }
