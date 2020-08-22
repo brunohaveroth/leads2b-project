@@ -8,7 +8,7 @@ import store from '../store/index.js'
 Vue.use(VueRouter)
 
 const authenticatedRoute = (to, from, next)=> {
-  return store.getters.isAuthenticated ? next() : next('/login');
+  return store.getters.isAuthenticated ? next() : next('/signin');
 }
 
 const routes = [

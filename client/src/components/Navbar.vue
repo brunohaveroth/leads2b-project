@@ -19,12 +19,9 @@
             </a>
 
             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
               <li>
-                <hr class="dropdown-divider">
+                <button type="button" class="dropdown-item" @click="logout">Sair</button>
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
         </ul>
@@ -34,7 +31,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Navbar',
@@ -43,6 +40,11 @@ export default {
       'company',
       'user',
       'isAuthenticated'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'logout'
     ])
   }
 }
