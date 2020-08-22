@@ -7,6 +7,12 @@
             Início
           </router-link>
         </li>
+
+        <li class="p-3 text-left">
+          <router-link to="/employee">
+            Empregados
+          </router-link>
+        </li>
       </ul>
     </div>
   </nav>
