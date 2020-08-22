@@ -17,9 +17,14 @@
                   <input class="form-control" type="text" placeholder="Nome" v-model="employee.firstName">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-3">
                   <label>Sobrenome</label>
                   <input class="form-control" type="text" placeholder="Sobrenome" v-model="employee.lastName">
+                </div>
+
+                <div class="form-group">
+                  <label>Email</label>
+                  <input class="form-control" type="email" placeholder="Email" v-model="employee.email">
                 </div>
               </div>
             </div>
@@ -61,8 +66,16 @@ export default {
       this.$store.dispatch('employee/findOne', this.$route.params.id);
     },
 
-    save () {
-      this.$store.dispatch('employee/update', this.employee);
+    async save () {
+      try {
+        await this.$store.dispatch('employee/update', this.employee);
+        this.$router.push(`/employee/show/${this.employee.id}`);
+      } catch (e) {
+        return this.$swal.fire({
+          icon: 'error',
+          title: 'Falha ao salvar colaborador'
+        });
+      }
     }
   },
 

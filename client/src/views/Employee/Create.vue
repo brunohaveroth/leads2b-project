@@ -17,9 +17,14 @@
                   <input class="form-control" type="text" placeholder="Nome" v-model="firstName">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-3">
                   <label>Sobrenome</label>
                   <input class="form-control" type="text" placeholder="Sobrenome" v-model="lastName">
+                </div>
+
+                <div class="form-group">
+                  <label>Email</label>
+                  <input class="form-control" type="email" placeholder="Email" v-model="email">
                 </div>
               </div>
             </div>

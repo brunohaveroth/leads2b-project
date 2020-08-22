@@ -20,7 +20,7 @@
 
                   <div class="ml-3">
                     <h6 class="font-weight-bold">{{item.firstName}} {{item.lastName}}</h6>
-                    <h6 class="mb-0">{{item.email}}</h6>
+                    <h6 class="mb-0">{{item.email || "Email não informado"}}</h6>
                   </div>
                 </router-link>
               </li>
