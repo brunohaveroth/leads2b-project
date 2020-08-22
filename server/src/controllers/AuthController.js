@@ -25,7 +25,7 @@ const AuthController = {
         } else {
           return res.ok({
             company,
-            user: user,
+            user,
             token: JwtService.issue({ user: user.id, company: company.id })
           });
         }
@@ -48,7 +48,11 @@ const AuthController = {
         company: company.id
       });
 
-      return res.ok({ user, company });
+      return res.ok({
+        company,
+        user,
+        token: JwtService.issue({ user: user.id, company: company.id })
+      });
     } catch (e) {
       return res.badRequest(e);
     }

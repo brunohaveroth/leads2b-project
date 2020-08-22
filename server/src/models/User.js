@@ -6,9 +6,27 @@ class User extends Model {
     return super.init({
       admin: DataTypes.BOOLEAN,
       company: DataTypes.INTEGER,
-      firstName: DataTypes.STRING,
-      lastName: DataTypes.STRING,
-      email: DataTypes.STRING,
+      firstName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: 'É necessário informar um nome' },
+        }
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: 'É necessário informar o sobrenome' },
+        }
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: 'É necessário informar o email' },
+        }
+      },
       password: DataTypes.TEXT,
     }, {
       sequelize,
