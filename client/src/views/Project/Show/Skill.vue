@@ -2,12 +2,12 @@
   <div class="employee-show-index">
     <div class="card border-0 border-top">
       <div class="card-header d-flex align-items-center border-0">
-        <h6 class="mb-0 font-weight-bold">Competências</h6>
+        <h6 class="mb-0 font-weight-bold">Competências necessárias</h6>
       </div>
 
       <ul class="list-group list-group-flush border-top">
-        <SkillItem v-for="item in skills" :key="item.id" v-bind:item="item" modelName="employeeSkill" />
-        <SkillAssociationForm v-if="isCreateNew" :toggleForm="toggleForm" modelName="employeeSkill" parentName="employee" />
+        <SkillItem v-for="item in skills" :key="item.id" v-bind:item="item" modelName="projectSkill" />
+        <SkillAssociationForm v-if="isCreateNew" :toggleForm="toggleForm" modelName="projectSkill" parentName="project" />
 
         <button class="w-100 btn btn-link" @click="toggleForm" v-if="!isCreateNew">
           <font-awesome-icon icon="plus" class="text-muted" /> Adicionar Competência
@@ -40,7 +40,7 @@ export default {
 
   computed: {
     skills () {
-      return this.$store.getters['employeeSkill/getAll'];
+      return this.$store.getters['projectSkill/getAll'];
     }
   },
 
@@ -50,7 +50,7 @@ export default {
     },
 
     fetchData () {
-      this.$store.dispatch('employeeSkill/find', { employee: this.$route.params.id });
+      this.$store.dispatch('projectSkill/find', { project: this.$route.params.id });
     }
   },
 

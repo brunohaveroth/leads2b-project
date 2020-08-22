@@ -13,6 +13,12 @@
             Empregados
           </router-link>
         </li>
+
+        <li class="p-3 text-left">
+          <router-link to="/projects">
+            Projetos
+          </router-link>
+        </li>
       </ul>
     </div>
   </nav>

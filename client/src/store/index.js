@@ -4,6 +4,8 @@ import auth from './modules/auth.js';
 import employee from './modules/employee.js';
 import skill from './modules/skill.js';
 import employeeSkill from './modules/employeeSkill.js';
+import project from './modules/project.js';
+import projectSkill from './modules/projectSkill.js';
 
 Vue.use(Vuex)
 
@@ -12,6 +14,8 @@ export default new Vuex.Store({
     auth,
     employee,
     employeeSkill,
-    skill
+    skill,
+    project,
+    projectSkill
   }
 })

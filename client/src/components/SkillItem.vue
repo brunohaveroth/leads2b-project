@@ -25,7 +25,8 @@
 export default {
   name: 'SkillItem',
   props: {
-    item: Object
+    item: Object,
+    modelName: String
   },
 
   data () {
@@ -39,18 +40,18 @@ export default {
       this.item.stars = star;
 
       try {
-        await this.$store.dispatch('employeeSkill/update', this.item);
+        await this.$store.dispatch(`${this.modelName}/update`, this.item);
       } catch (e) {
         return this.$swal.fire({
           icon: 'error',
-          title: 'Falha ao cadastrar skill para o colaborador'
+          title: 'Falha ao atualizar skill'
         });
       }
     },
 
     async remove() {
       try {
-        await this.$store.dispatch('employeeSkill/destroy', this.item.id);
+        await this.$store.dispatch(`${this.modelName}/destroy`, this.item.id);
         return this.$swal.fire({
           icon: 'success',
           title: 'Removido com sucesso'
@@ -58,7 +59,7 @@ export default {
       } catch (e) {
         return this.$swal.fire({
           icon: 'error',
-          title: 'Falha ao criar colaborador'
+          title: 'Falha ao remover skill'
         });
       }
     }

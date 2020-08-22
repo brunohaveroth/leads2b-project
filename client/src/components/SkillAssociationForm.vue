@@ -48,7 +48,9 @@ export default {
   },
 
   props: {
-    toggleForm: Function
+    toggleForm: Function,
+    modelName: String,
+    parentName: String
   },
 
   computed: {
@@ -64,18 +66,19 @@ export default {
 
     async save() {
       try {
-        const data = {
+        let data = {
           stars: this.currentStars,
-          employee: this.$route.params.id,
           skill: this.skill.id
         };
 
-        await this.$store.dispatch('employeeSkill/create', data);
+        data[this.parentName] = this.$route.params.id;
+
+        await this.$store.dispatch(`${this.modelName}/create`, data);
         this.toggleForm();
       } catch (e) {
         return this.$swal.fire({
           icon: 'error',
-          title: 'Falha ao cadastrar skill para o colaborador'
+          title: 'Falha ao cadastrar skill'
         });
       }
     }
