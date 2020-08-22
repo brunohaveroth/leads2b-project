@@ -58,7 +58,7 @@ export default {
 
       try {
         await this.$store.dispatch('login', credentials);
-        this.$router.push('/home');
+        this.$router.push('/');
       } catch (e) {
         return this.$swal.fire({
           icon: 'error',

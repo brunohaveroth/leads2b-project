@@ -93,7 +93,7 @@ export default {
 
       try {
         await this.$store.dispatch('signup', { user, company });
-        this.$router.push('/home');
+        this.$router.push('/');
       } catch (e) {
         // TODO: Exibir campos que estão faltando
         return this.$swal.fire({
