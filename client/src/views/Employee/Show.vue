@@ -15,13 +15,13 @@
         </div>
       </div>
 
-      <ul class="list-group list-group-flush">
+      <ul class="list-group list-group-flush py-3">
         <li class="list-group-item">
           <div class="row">
-            <div class="col-md-4 d-flex align-items-center">
+            <div class="col-md-6 d-flex align-items-center">
               <Avatar class="avatar-7" :item="employee"/>
 
-              <div class="ml-3">
+              <div class="ml-4">
                 <h6 class="font-weight-bold">{{employee.firstName}} {{employee.lastName}}</h6>
                 <h6 class="mb-0">{{employee.email}}</h6>
               </div>

@@ -71,7 +71,7 @@ export default {
         };
 
         await this.$store.dispatch('employeeSkill/create', data);
-        this.onSave();
+        this.toggleForm();
       } catch (e) {
         return this.$swal.fire({
           icon: 'error',

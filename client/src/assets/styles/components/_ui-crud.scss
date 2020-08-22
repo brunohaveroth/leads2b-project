@@ -145,25 +145,4 @@
       background: #555;
     }
   }
-
-  .ui-crud__preview {
-    position: relative;
-    text-align: center;
-
-    .ui-crud__preview__head {
-      position: relative;
-      height: 20vh;
-    }
-
-    .ui-crud__preview__title {
-      margin-top: 10%;
-      font-size: 3vh;
-      color: $body-color;
-    }
-
-    .ui-crud__preview__description {
-      margin-top: 2%;
-      font-size: 2vh;
-    }
-  }
 }

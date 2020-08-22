@@ -28,7 +28,9 @@
           </div>
 
           <div class="ui-crud__view col-md-8">
-            <router-view />
+            <div class="ui-crud__scroll">
+              <router-view />
+            </div>
           </div>
         </div>
       </div>
