@@ -1,7 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const isAuthenticated = require('./middlewares/isAuthenticated');
-const { AuthController, EmployeeController, EmployeeSkillController, SkillController } = require('./controllers/loader');
+const {
+  AuthController,
+  EmployeeController,
+  EmployeeSkillController,
+  ProjectController,
+  SkillController,
+  ProjectSkillController
+} = require('./controllers/loader');
 
 // AuthController
 router.post('/signup', AuthController.signup);
@@ -27,5 +34,19 @@ router.post('/employeeSkill', [isAuthenticated], EmployeeSkillController.create)
 router.get('/employeeSkill/:id', [isAuthenticated], EmployeeSkillController.findOne);
 router.put('/employeeSkill/:id', [isAuthenticated], EmployeeSkillController.update);
 router.delete('/employeeSkill/:id', [isAuthenticated], EmployeeSkillController.destroy);
+
+// ProjectController
+router.get('/project', [isAuthenticated], ProjectController.find);
+router.post('/project', [isAuthenticated], ProjectController.create);
+router.get('/project/:id', [isAuthenticated], ProjectController.findOne);
+router.put('/project/:id', [isAuthenticated], ProjectController.update);
+router.delete('/project/:id', [isAuthenticated], ProjectController.destroy);
+
+// EmployeeSkillController
+router.get('/projectSkill', [isAuthenticated], ProjectSkillController.find);
+router.post('/projectSkill', [isAuthenticated], ProjectSkillController.create);
+router.get('/projectSkill/:id', [isAuthenticated], ProjectSkillController.findOne);
+router.put('/projectSkill/:id', [isAuthenticated], ProjectSkillController.update);
+router.delete('/projectSkill/:id', [isAuthenticated], ProjectSkillController.destroy);
 
 module.exports = (app) => app.use(router);
