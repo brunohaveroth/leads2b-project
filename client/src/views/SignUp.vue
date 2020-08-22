@@ -49,7 +49,7 @@
               <h4 class="text-center mb-0 mt-3">ou</h4>
 
               <div class="text-center py-3">
-                <router-link to="/signup" class="text-primary">Fazer login</router-link>
+                <router-link to="/signin" class="text-primary">Fazer login</router-link>
               </div>
             </form>
           </div>

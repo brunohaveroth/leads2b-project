@@ -11,13 +11,17 @@
 
         <div class="d-flex mt-2">
           <div class="mx-1 text-center" v-for="star in stars" :key="star" @click="updateStars(star)">
-            <font-awesome-icon icon="star" size="lg" v-bind:class="star <= currentStars ? 'text-warning' : 'text-muted'" />
+            <font-awesome-icon class="skill-star" icon="star" size="lg" v-bind:class="star <= currentStars ? 'text-warning' : 'text-muted'" />
             <h6 class="small mt-1 mb-0 font-weight-bold">{{star}}</h6>
           </div>
         </div>
       </div>
 
       <div class="mt-4 text-right">
+        <button type="button" class="btn btn-outline-primary mr-3" @click="toggleForm">
+          <font-awesome-icon icon="times" /> Cancelar
+        </button>
+
         <button type="button" class="btn btn-primary" @click="save">
           <font-awesome-icon icon="save" /> Salvar
         </button>
@@ -44,7 +48,7 @@ export default {
   },
 
   props: {
-    onSave: Function
+    toggleForm: Function
   },
 
   computed: {

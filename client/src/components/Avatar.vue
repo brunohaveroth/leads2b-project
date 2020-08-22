@@ -12,7 +12,7 @@ export default {
   computed: {
     image() {
       const code = this.item ? this.item.firstName + this.item.lastName : 'default';
-      return `https://api.adorable.io/avatars/285/${code}.png`;
+      return `https://api.adorable.io/avatars/70/${code}.png`;
     }
   }
 }

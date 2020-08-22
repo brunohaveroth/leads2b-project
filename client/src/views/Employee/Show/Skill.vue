@@ -7,16 +7,10 @@
 
       <ul class="list-group list-group-flush border-top">
         <SkillItem v-for="item in skills" :key="item.id" v-bind:item="item" />
-        <SkillAssociationForm v-if="isCreateNew" :onSave="toggleCreateNew" />
+        <SkillAssociationForm v-if="isCreateNew" :toggleForm="toggleForm" />
 
-        <button class="w-100 btn btn-link" @click="toggleCreateNew">
-          <div v-if="!isCreateNew">
-            <font-awesome-icon icon="plus" class="text-muted" /> Adicionar Competência
-          </div>
-
-          <div class="text-danger" v-if="isCreateNew">
-            <font-awesome-icon icon="times" /> Cancelar
-          </div>
+        <button class="w-100 btn btn-link" @click="toggleForm" v-if="!isCreateNew">
+          <font-awesome-icon icon="plus" class="text-muted" /> Adicionar Competência
         </button>
       </ul>
     </div>
@@ -51,7 +45,7 @@ export default {
   },
 
   methods: {
-    toggleCreateNew () {
+    toggleForm () {
       this.isCreateNew = !this.isCreateNew;
     },
 

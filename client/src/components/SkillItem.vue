@@ -5,14 +5,14 @@
 
       <div class="d-flex">
         <div class="mx-1 text-center" v-for="star in stars" :key="star" @click="updateStars(star)">
-          <font-awesome-icon icon="star" v-bind:class="star <= item.stars ? 'text-warning' : 'text-muted'" />
+          <font-awesome-icon class="skill-star" icon="star" v-bind:class="star <= item.stars ? 'text-warning' : 'text-muted'" />
         </div>
       </div>
     </div>
     <div class="ml-auto">
-      <button type="button" class="btn btn-link py-0 text-primary">
+      <!-- <button type="button" class="btn btn-link py-0 text-primary">
         <font-awesome-icon icon="edit" />
-      </button>
+      </button> -->
 
       <button type="button" class="btn btn-link py-0 text-danger" @click="remove">
         <font-awesome-icon icon="trash" />
@@ -35,6 +35,19 @@ export default {
   },
 
   methods: {
+    async updateStars(star) {
+      this.item.stars = star;
+
+      try {
+        await this.$store.dispatch('employeeSkill/update', this.item);
+      } catch (e) {
+        return this.$swal.fire({
+          icon: 'error',
+          title: 'Falha ao cadastrar skill para o colaborador'
+        });
+      }
+    },
+
     async remove() {
       try {
         await this.$store.dispatch('employeeSkill/destroy', this.item.id);
