@@ -15,8 +15,9 @@
           <div class="ui-crud__list col-md-4">
             <ul class="list-group list-group-flush">
               <li class="list-group-item" v-for="item in employees" :key="item.id">
-                <router-link :to="{ name: 'EmployeeShow', params: { id: item.id }}" class="d-flex align-items-center">
-                  <img class="avatar-5" src="https://talentrh-prod.s3.amazonaws.com/profile-images/51cd0824-1f14-43c1-9da2-6cc0097a60bc.jpg" alt="User Avatar">
+                <router-link :to="{ name: 'EmployeeShowSkill', params: { id: item.id }}" class="d-flex align-items-center">
+                  <Avatar class="avatar-5" :item="item"/>
+
                   <div class="ml-3">
                     <h6 class="font-weight-bold">{{item.firstName}} {{item.lastName}}</h6>
                     <h6 class="mb-0">{{item.email}}</h6>
@@ -36,9 +37,13 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
+import Avatar from '@/components/Avatar.vue'
 
 export default {
+  components: {
+    Avatar
+  },
+
   created () {
     this.$store.dispatch('employee/find');
   },

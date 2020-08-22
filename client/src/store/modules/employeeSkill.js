@@ -6,7 +6,7 @@ export default {
 
   state: {
     ...state,
-    modelName: 'employee'
+    modelName: 'employeeSkill'
   },
 
   getters: {

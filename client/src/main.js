@@ -4,15 +4,19 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import router from './router'
 import store from './store'
 import axios from 'axios'
-import 'sweetalert2/dist/sweetalert2.min.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faStar, faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faPlus, faStar, faSave, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import vSelect from 'vue-select'
 
-library.add(faStar, faEdit, faTrash, faPlus)
+import 'sweetalert2/dist/sweetalert2.min.css';
+import 'vue-select/dist/vue-select.css';
+
+library.add(faEdit, faPlus, faStar, faSave, faTrash, faTimes)
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
+Vue.component('v-select', vSelect)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VueSweetalert2);
 Vue.config.productionTip = false

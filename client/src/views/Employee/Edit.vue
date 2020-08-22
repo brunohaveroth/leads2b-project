@@ -9,7 +9,7 @@
         <li class="list-group-item">
           <div class="row">
             <div class="col-md-6 d-flex align-items-center">
-              <img class="avatar-7 flex-shrink-0" src="https://talentrh-prod.s3.amazonaws.com/profile-images/51cd0824-1f14-43c1-9da2-6cc0097a60bc.jpg" alt="User Avatar">
+              <Avatar class="avatar-7 flex-shrink-0" :item="employee"/>
 
               <div class="ml-3">
                 <div class="form-group mb-3">
@@ -39,23 +39,29 @@
 </template>
 
 <script>
+import Avatar from '@/components/Avatar.vue'
+
 export default {
+  components: {
+    Avatar
+  },
+
   created () {
     this.fetchData();
   },
 
   computed: {
-    employee() {
+    employee () {
       return this.$store.getters['employee/getById'](this.$route.params.id);
     }
   },
 
   methods: {
-    fetchData() {
+    fetchData () {
       this.$store.dispatch('employee/findOne', this.$route.params.id);
     },
 
-    save() {
+    save () {
       this.$store.dispatch('employee/update', this.employee);
     }
   },

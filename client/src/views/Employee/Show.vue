@@ -19,7 +19,7 @@
         <li class="list-group-item">
           <div class="row">
             <div class="col-md-4 d-flex align-items-center">
-              <img class="avatar-7" src="https://talentrh-prod.s3.amazonaws.com/profile-images/51cd0824-1f14-43c1-9da2-6cc0097a60bc.jpg" alt="User Avatar">
+              <Avatar class="avatar-7" :item="employee"/>
 
               <div class="ml-3">
                 <h6 class="font-weight-bold">{{employee.firstName}} {{employee.lastName}}</h6>
@@ -31,49 +31,18 @@
       </ul>
     </div>
 
-    <div class="card border-0 border-top">
-      <div class="card-header d-flex align-items-center border-0">
-        <h6 class="mb-0 font-weight-bold">Competências</h6>
-      </div>
-
-      <ul class="list-group list-group-flush border-top">
-        <li class="list-group-item d-flex align-items-center">
-          <div class="">
-            <h6 class="font-weight-bold">Node.js</h6>
-            <div>
-              <font-awesome-icon icon="star" class="text-warning" />
-              <font-awesome-icon icon="star" class="text-warning" />
-              <font-awesome-icon icon="star" class="text-warning" />
-              <font-awesome-icon icon="star" class="text-warning" />
-              <font-awesome-icon icon="star" class="text-warning" />
-              <font-awesome-icon icon="star" class="text-warning" />
-              <font-awesome-icon icon="star" class="text-warning" />
-              <font-awesome-icon icon="star" class="text-muted" />
-              <font-awesome-icon icon="star" class="text-muted" />
-              <font-awesome-icon icon="star" class="text-muted" />
-            </div>
-          </div>
-          <div class="ml-auto">
-            <button type="button" class="btn btn-link py-0 text-primary">
-              <font-awesome-icon icon="edit" />
-            </button>
-
-            <button type="button" class="btn btn-link py-0 text-danger">
-              <font-awesome-icon icon="trash" />
-            </button>
-          </div>
-        </li>
-
-        <button class="w-100 btn btn-link">
-          <font-awesome-icon icon="plus" class="text-muted" /> Adicionar Competência
-        </button>
-      </ul>
-    </div>
+    <router-view/>
   </div>
 </template>
 
 <script>
+import Avatar from '@/components/Avatar.vue'
+
 export default {
+  components: {
+    Avatar
+  },
+
   created () {
     this.fetchData();
   },

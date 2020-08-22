@@ -9,7 +9,7 @@
         <li class="list-group-item">
           <div class="row">
             <div class="col-md-6 d-flex align-items-center">
-              <img class="avatar-7 flex-shrink-0" src="https://talentrh-prod.s3.amazonaws.com/profile-images/51cd0824-1f14-43c1-9da2-6cc0097a60bc.jpg" alt="User Avatar">
+              <Avatar class="avatar-7 flex-shrink-0" />
 
               <div class="ml-3">
                 <div class="form-group mb-3">
@@ -39,9 +39,13 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
+import Avatar from '@/components/Avatar.vue'
 
 export default {
+  components: {
+    Avatar
+  },
+
   data() {
     return {
       email: null,
@@ -49,10 +53,11 @@ export default {
       lastName: null
     }
   },
+
   methods: {
-    async save() {
+    async save () {
       try {
-        let { data } = await this.$store.dispatch('create', this.$data);
+        let { data } = await this.$store.dispatch('employee/create', this.$data);
         this.$router.push(`/employee/show/${data.id}`);
       } catch (e) {
         return this.$swal.fire({

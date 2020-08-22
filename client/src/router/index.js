@@ -9,6 +9,7 @@ import EmployeeIndex from '../views/Employee/Index.vue'
 import EmployeeShow from '../views/Employee/Show.vue'
 import EmployeeEdit from '../views/Employee/Edit.vue'
 import EmployeeCreate from '../views/Employee/Create.vue'
+import EmployeeShowSkill from '../views/Employee/Show/Skill.vue'
 
 Vue.use(VueRouter)
 
@@ -32,7 +33,14 @@ const routes = [
       {
         path: 'show/:id',
         name: 'EmployeeShow',
-        component: EmployeeShow
+        component: EmployeeShow,
+        children: [
+          {
+            path: '',
+            name: 'EmployeeShowSkill',
+            component: EmployeeShowSkill
+          }
+        ]
       },
       {
         path: 'create',

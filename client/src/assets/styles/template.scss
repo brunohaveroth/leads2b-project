@@ -11,6 +11,10 @@
   width: calc(90% - 250px);
 }
 
+.btn:focus {
+  box-shadow: none !important;
+}
+
 @import 'variables';
 @import 'bootstrap';
 @import 'components';
