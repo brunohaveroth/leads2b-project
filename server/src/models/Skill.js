@@ -1,20 +1,27 @@
 const { DataTypes, Model } = require('sequelize');
 
-class Company extends Model {
+class Skill extends Model {
   static init(sequelize) {
     return super.init({
-      name: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           notNull: { msg: 'É necessário informar um nome' },
         }
       },
+      company: DataTypes.INTEGER
     }, {
       sequelize,
-      tableName: 'company'
+      tableName: 'skill'
+    });
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Company, {
+      foreignKey: { allowNull: false, name: 'company' }
     });
   }
 }
 
-module.exports = Company;
+module.exports = Skill;
