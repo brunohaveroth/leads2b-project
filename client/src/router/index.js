@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store/index.js'
+
 import Home from '../views/Home.vue'
 import SignIn from '../views/SignIn.vue'
 import SignUp from '../views/SignUp.vue'
-import store from '../store/index.js'
+import EmployeeIndex from '../views/Employee/Index.vue'
+import EmployeeShow from '../views/Employee/Show.vue'
+import EmployeeEdit from '../views/Employee/Edit.vue'
+import EmployeeCreate from '../views/Employee/Create.vue'
 
 Vue.use(VueRouter)
 
@@ -17,6 +22,29 @@ const routes = [
     name: 'Home',
     component: Home,
     beforeEnter: authenticatedRoute
+  },
+  {
+    path: '/employee',
+    name: 'Employee',
+    component: EmployeeIndex,
+    beforeEnter: authenticatedRoute,
+    children: [
+      {
+        path: 'show/:id',
+        name: 'EmployeeShow',
+        component: EmployeeShow
+      },
+      {
+        path: 'create',
+        name: 'EmployeeCreate',
+        component: EmployeeCreate
+      },
+      {
+        path: 'edit/:id',
+        name: 'EmployeeEdit',
+        component: EmployeeEdit
+      }
+    ]
   },
   {
     path: '/signin',
