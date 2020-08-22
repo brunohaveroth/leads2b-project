@@ -74,9 +74,12 @@ export default {
   },
 
   methods: {
-    onSubmit() {
+    async onSubmit() {
       if (this.password !== this.passwordConfirm) {
-        return alert('As senhas não coincidem');
+        return this.$swal.fire({
+          icon: 'warning',
+          title: 'As senhas não coincidem'
+        });
       }
 
       let user = {
@@ -88,7 +91,16 @@ export default {
 
       let company = { name: this.companyName };
 
-      this.$store.dispatch('signup', { user, company });
+      try {
+        await this.$store.dispatch('signup', { user, company });
+        this.$router.push('/home');
+      } catch (e) {
+        // TODO: Exibir campos que estão faltando
+        return this.$swal.fire({
+          icon: 'error',
+          title: 'Falha ao criar conta'
+        });
+      }
     }
   }
 }

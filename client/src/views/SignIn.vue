@@ -50,13 +50,21 @@ export default {
   },
 
   methods: {
-    onSubmit() {
+    async onSubmit() {
       let credentials = {
         identification: this.email,
         password: this.password
       };
 
-      this.$store.dispatch('login', credentials);
+      try {
+        await this.$store.dispatch('login', credentials);
+        this.$router.push('/home');
+      } catch (e) {
+        return this.$swal.fire({
+          icon: 'error',
+          title: 'Falha ao fazer login'
+        });
+      }
     }
   }
 }
