@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark position-fixed w-100" v-if="isAuthenticated">
     <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center" href="#">
+      <a class="navbar-brand d-flex align-items-center" href="/">
         <img src="https://leads2b.com/wp-content/uploads/2020/07/logo-leads2b_C.svg" alt="">
         <span class="mx-3">|</span>
         <span>{{company.name}}</span>
