@@ -1,6 +1,7 @@
 const { User, Company } = require('../models/loader');
 const bcrypt = require('bcryptjs');
 const JwtService = require('../services/JWT');
+const Populate = require('../services/Populate');
 
 const AuthController = {
   async login (req, res) {
@@ -48,12 +49,16 @@ const AuthController = {
         company: company.id
       });
 
+      // Criar alguns registros para popular a company
+      Populate.all(company);
+
       return res.ok({
         company,
         user,
         token: JwtService.issue({ user: user.id, company: company.id })
       });
     } catch (e) {
+      console.log(e);
       return res.badRequest(e);
     }
   }

@@ -11,6 +11,11 @@
             <label>Título</label>
             <input class="form-control" type="text" placeholder="Nome" v-model="project.title">
           </div>
+
+          <div class="form-group mt-3">
+            <label>Título</label>
+            <textarea class="form-control" placeholder="Descrição" v-model="project.description"></textarea>
+          </div>
         </li>
 
         <li class="list-group-item text-right">

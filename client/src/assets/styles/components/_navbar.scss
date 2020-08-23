@@ -1,6 +1,7 @@
 .navbar {
   background: #2a3d5f;
   animation: navbarEffect 0.5s forwards;
+  z-index: 20;
 }
 
 @keyframes navbarEffect {

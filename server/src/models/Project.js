@@ -4,6 +4,7 @@ class Project extends Model {
   static init(sequelize) {
     return super.init({
       company: DataTypes.INTEGER,
+      description: DataTypes.TEXT,
       title: {
         type: DataTypes.STRING,
         allowNull: false,

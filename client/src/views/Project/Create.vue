@@ -11,6 +11,11 @@
             <label>Título</label>
             <input class="form-control" type="text" placeholder="Nome" v-model="title">
           </div>
+
+          <div class="form-group mt-3">
+            <label>Descrição</label>
+            <textarea class="form-control" placeholder="Descrição" v-model="description"></textarea>
+          </div>
         </li>
 
         <li class="list-group-item text-right">
@@ -29,7 +34,8 @@
 export default {
   data() {
     return {
-      title: null
+      title: null,
+      description: null
     }
   },
 

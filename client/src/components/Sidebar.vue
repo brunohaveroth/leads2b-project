@@ -2,21 +2,21 @@
   <nav class="sidebar border-right" v-if="isAuthenticated">
     <div class="container-fluid">
       <ul class="list-unstyled">
-        <li class="p-3 text-left">
+        <li class="p-3 text-left font-weight-bold">
           <router-link to="/">
-            Início
+            <font-awesome-icon icon="home" /> Início
           </router-link>
         </li>
 
-        <li class="p-3 text-left">
+        <li class="p-3 text-left font-weight-bold">
           <router-link to="/employee">
-            Empregados
+            <font-awesome-icon icon="users" /> Empregados
           </router-link>
         </li>
 
-        <li class="p-3 text-left">
+        <li class="p-3 text-left font-weight-bold">
           <router-link to="/project">
-            Projetos
+            <font-awesome-icon icon="tasks" /> Projetos
           </router-link>
         </li>
       </ul>

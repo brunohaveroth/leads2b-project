@@ -18,6 +18,7 @@
       <ul class="list-group list-group-flush py-3">
         <li class="list-group-item">
           <h6 class="font-weight-bold">{{project.title}}</h6>
+          <h6 class="mb-0">{{project.description || "Descrição não informada"}}</h6>
         </li>
       </ul>
     </div>

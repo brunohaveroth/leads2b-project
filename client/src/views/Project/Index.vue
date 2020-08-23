@@ -15,7 +15,8 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item py-3" v-for="item in projects" :key="item.id">
                 <router-link :to="{ name: 'ProjectShowSkill', params: { id: item.id }}">
-                  <h6 class="font-weight-bold mb-0">{{item.title}}</h6>
+                  <h6 class="font-weight-bold">{{item.title}}</h6>
+                  <h6 class="mb-0">{{item.description || "Descrição não informada"}}</h6>
                 </router-link>
               </li>
             </ul>

@@ -5,14 +5,14 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faEdit, faPlus, faStar, faSave, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faPlus, faStar, faSave, faTrash, faTimes, faUsers, faHome, faTasks } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import vSelect from 'vue-select'
 
 import 'sweetalert2/dist/sweetalert2.min.css';
 import 'vue-select/dist/vue-select.css';
 
-library.add(faEdit, faPlus, faStar, faSave, faTrash, faTimes)
+library.add(faEdit, faPlus, faStar, faSave, faTrash, faTimes, faUsers, faHome, faTasks)
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
