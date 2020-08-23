@@ -10,10 +10,6 @@
       </div>
     </div>
     <div class="ml-auto">
-      <!-- <button type="button" class="btn btn-link py-0 text-primary">
-        <font-awesome-icon icon="edit" />
-      </button> -->
-
       <button type="button" class="btn btn-link py-0 text-danger" @click="remove">
         <font-awesome-icon icon="trash" />
       </button>
