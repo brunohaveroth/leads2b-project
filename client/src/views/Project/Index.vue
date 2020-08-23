@@ -5,7 +5,7 @@
         <h6 class="font-weight-bold text-primary mb-0">Projetos</h6>
 
         <div class="ml-auto d-flex align-items-center">
-          <router-link to="/employee/create" class="btn btn-primary btn-sm flex-shrink-0 ml-3">Adicionar Projeto</router-link>
+          <router-link to="/project/create" class="btn btn-primary btn-sm flex-shrink-0 ml-3">Adicionar Projeto</router-link>
         </div>
       </div>
 

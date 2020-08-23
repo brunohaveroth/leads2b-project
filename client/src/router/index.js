@@ -12,6 +12,7 @@ import EmployeeCreate from '../views/Employee/Create.vue'
 import EmployeeShowSkill from '../views/Employee/Show/Skill.vue'
 import ProjectIndex from '../views/Project/Index.vue'
 import ProjectShow from '../views/Project/Show.vue'
+import ProjectCreate from '../views/Project/Create.vue'
 import ProjectEdit from '../views/Project/Edit.vue'
 import ProjectShowSkill from '../views/Project/Show/Skill.vue'
 import ProjectShowEmployee from '../views/Project/Show/Employee.vue'
@@ -70,6 +71,11 @@ const routes = [
         path: 'edit/:id',
         name: 'ProjectEdit',
         component: ProjectEdit
+      },
+      {
+        path: 'create',
+        name: 'ProjectCreate',
+        component: ProjectCreate
       },
       {
         path: 'show/:id',

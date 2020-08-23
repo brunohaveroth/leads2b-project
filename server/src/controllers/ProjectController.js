@@ -105,27 +105,37 @@ const ProjectController = {
           project: req.params.id
         }
       });
-      let participantids = participants.map(o => o.employee);
+
+      let ignoreIds = participants.map(o => o.employee);
 
       const [bests] = await sequelize.query(`
         select employee.id, employee.firstName, employee.lastName, employee.email, SUM(employeeskill.stars) as stars from projectskill
         inner join employeeskill ON employeeskill.skill = projectskill.skill AND employeeskill.stars >= projectskill.stars
         inner join employee ON employee.id = employeeskill.employee
-        where projectskill.project = ${req.params.id} and employee.id not in (${participantids})
+        where projectskill.project = ${req.params.id} and employee.id not in (${ignoreIds}) and employee.company = ${req.user.company}
         group By employee.id
         order by stars DESC;
       `);
+
+      ignoreIds = [...ignoreIds, ...bests.map(o=> o.id) ];
 
       const [others] = await sequelize.query(`
         select employee.id, employee.firstName, employee.lastName, employee.email, SUM(employeeskill.stars) as stars from projectskill
         inner join employeeskill ON employeeskill.skill = projectskill.skill
         inner join employee ON employee.id = employeeskill.employee
-        where projectskill.project = ${req.params.id} AND employee.id NOT IN (${bests.map(o=> o.id)}) AND employee.id not in (${participantids})
+        where projectskill.project = ${req.params.id} AND employee.id not in (${ignoreIds}) and employee.company = ${req.user.company}
         group By employee.id
         order by stars DESC;
       `);
 
-      return res.ok({ bests, others });
+      ignoreIds = [...ignoreIds, ...others.map(o=> o.id) ];
+
+      const [all] = await sequelize.query(`
+        select employee.id, employee.firstName, employee.lastName, employee.email from employee
+        where employee.id not in (${ignoreIds}) and employee.company = ${req.user.company};
+      `);
+
+      return res.ok({ bests, others, all });
     } catch(e) {
       console.log(e);
       return res.badRequest(e);

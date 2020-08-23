@@ -15,7 +15,9 @@
       </li>
     </ul>
 
-    <router-link :to="{ name: 'ProjectShowAddEmployee'}" class="w-100 btn btn-link py-3">Adicionar Colaborador</router-link>
+    <router-link :to="{ name: 'ProjectShowAddEmployee'}" class="w-100 btn btn-link py-3">
+      <font-awesome-icon icon="plus" class="text-muted" /> Adicionar Colaborador
+    </router-link>
   </div>
 </template>
 
