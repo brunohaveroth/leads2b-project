@@ -9,7 +9,13 @@ class EmployeeSkill extends Model {
       skill: DataTypes.INTEGER
     }, {
       sequelize,
-      tableName: 'employeeskill'
+      tableName: 'employeeskill',
+      indexes: [
+        {
+          unique: true,
+          fields: ['employee', 'skill']
+        }
+      ]
     });
   }
 

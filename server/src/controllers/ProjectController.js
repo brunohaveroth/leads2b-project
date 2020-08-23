@@ -2,46 +2,62 @@ const { Employee, Project, ParticipantOnProject, sequelize } = require('../model
 
 const ProjectController = {
   async find (req, res) {
-    const projects = await Project.findAll({
-      where: { company: req.user.company }
-    });
-    return res.ok(projects);
+    try {
+      const projects = await Project.findAll({
+        where: { company: req.user.company }
+      });
+      return res.ok(projects);
+    } catch (e) {
+      return res.badRequest(e);
+    }
   },
 
   async findOne (req, res) {
-    const project = await Project.findOne({
-      where: {
-        id: req.params.id,
-        company: req.user.company
-      }
-    });
+    try {
+      const project = await Project.findOne({
+        where: {
+          id: req.params.id,
+          company: req.user.company
+        }
+      });
 
-    return res.ok(project);
+      return res.ok(project);
+    } catch (e) {
+      return res.badRequest(e);
+    }
   },
 
   async update (req, res) {
-    const project = await Project.findOne({
-      where: {
-        id: req.params.id,
+    try {
+      const project = await Project.findOne({
+        where: {
+          id: req.params.id,
+          company: req.user.company
+        }
+      });
+
+      project.update({
+        ...req.body,
         company: req.user.company
-      }
-    });
+      });
 
-    project.update({
-      ...req.body,
-      company: req.user.company
-    });
-
-    return res.ok(project);
+      return res.ok(project);
+    } catch (e) {
+      return res.badRequest(e);
+    }
   },
 
   async create (req, res) {
-    const project = await Project.create({
-      ...req.body,
-      company: req.user.company
-    });
+    try {
+      const project = await Project.create({
+        ...req.body,
+        company: req.user.company
+      });
 
-    return res.ok(project);
+      return res.ok(project);
+    } catch (e) {
+      return res.badRequest(e);
+    }
   },
 
   async destroy (req, res) {
@@ -108,6 +124,7 @@ const ProjectController = {
 
       let ignoreIds = participants.map(o => o.employee);
 
+      // TODO: Refazer usando sequelize ao invés de .query
       const [bests] = await sequelize.query(`
         select employee.id, employee.firstName, employee.lastName, employee.email, SUM(employeeskill.stars) as stars from projectskill
         inner join employeeskill ON employeeskill.skill = projectskill.skill AND employeeskill.stars >= projectskill.stars
