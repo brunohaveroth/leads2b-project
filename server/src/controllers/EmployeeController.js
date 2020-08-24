@@ -1,4 +1,4 @@
-const { Employee } = require('../models/loader');
+const { Employee, EmployeeSkill } = require('../models/loader');
 
 const EmployeeController = {
   async find (req, res) {
@@ -61,11 +61,23 @@ const EmployeeController = {
   },
 
   async destroy (req, res) {
+    const { id } = req.params;
+    const { company } = req.user;
+
     try {
+      // Remove as dependências
+      await EmployeeSkill.destroy({
+        where: {
+          employee: id,
+          company
+        }
+      });
+
+      // Remove o colaborador
       await Employee.destroy({
         where: {
-          id: req.params.id,
-          company: req.user.company
+          id: id,
+          company
         }
       });
 

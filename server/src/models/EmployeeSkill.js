@@ -5,18 +5,8 @@ class EmployeeSkill extends Model {
     return super.init({
       stars: DataTypes.INTEGER,
       company: DataTypes.INTEGER,
-      employee: {
-        type: DataTypes.INTEGER,
-        unique: {
-          msg: 'Não é possível adicionar duas competências iguais para o mesmo colaborador'
-        }
-      },
-      skill: {
-        type: DataTypes.INTEGER,
-        unique: {
-          msg: 'Não é possível adicionar duas competências iguais para o mesmo colaborador'
-        }
-      }
+      employee: DataTypes.INTEGER,
+      skill: DataTypes.INTEGER
     }, {
       sequelize,
       tableName: 'employeeskill',

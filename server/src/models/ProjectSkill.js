@@ -5,18 +5,8 @@ class ProjectSkill extends Model {
     return super.init({
       stars: DataTypes.INTEGER,
       company: DataTypes.INTEGER,
-      project: {
-        type: DataTypes.INTEGER,
-        unique: {
-          msg: 'Não é possível adicionar duas competências iguais para o mesmo projeto'
-        }
-      },
-      skill: {
-        type: DataTypes.INTEGER,
-        unique: {
-          msg: 'Não é possível adicionar duas competências iguais para o mesmo projeto'
-        }
-      }
+      project: DataTypes.INTEGER,
+      skill: DataTypes.INTEGER
     }, {
       sequelize,
       tableName: 'projectskill',
