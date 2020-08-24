@@ -2,7 +2,7 @@
   <div class="project-show-employee border-top">
     <ul class="list-group list-group-flush">
       <li class="list-group-item d-flex align-items-center" v-for="item in participants" :key="item.id">
-        <Avatar class="avatar-5" :item="item.Employee"/>
+        <Avatar class="avatar-5 flex-shrink-0" :item="item.Employee"/>
 
         <div class="ml-3">
           <h6 class="font-weight-bold">{{item.Employee.firstName}} {{item.Employee.lastName}}</h6>

@@ -19,7 +19,7 @@
         <li class="list-group-item">
           <div class="row">
             <div class="col-md-6 d-flex align-items-center">
-              <Avatar class="avatar-7" :item="employee"/>
+              <Avatar class="avatar-7 flex-shrink-0" :item="employee"/>
 
               <div class="ml-4">
                 <h6 class="font-weight-bold">{{employee.firstName}} {{employee.lastName}}</h6>
