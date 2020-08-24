@@ -12,7 +12,7 @@
       <div class="ui-crud card-body p-0">
         <div class="ui-crud__body row">
           <div class="ui-crud__list col-md-4">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush ui-crud__scroll">
               <li class="list-group-item" v-for="item in employees" :key="item.id">
                 <router-link :to="{ name: 'EmployeeShowSkill', params: { id: item.id }}" class="d-flex align-items-center">
                   <Avatar class="avatar-5 flex-shrink-0" :item="item"/>
