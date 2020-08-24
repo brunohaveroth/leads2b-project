@@ -12,7 +12,7 @@
       <div class="ui-crud card-body p-0">
         <div class="ui-crud__body row">
           <div class="ui-crud__list col-md-4">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush ui-crud__scroll">
               <li class="list-group-item py-3" v-for="item in projects" :key="item.id">
                 <router-link :to="{ name: 'ProjectShowSkill', params: { id: item.id }}">
                   <h6 class="font-weight-bold">{{item.title}}</h6>
