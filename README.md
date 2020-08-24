@@ -1,7 +1,7 @@
 # leads2b-project
 
 ## Sobre o projeto
-Sitema feito com Vue.js e Nodejs.
+Sistema feito com Vue.js, Node.js e SQLite.
 
 O projeto permite fazer o controle de colaboradores e projetos de uma empresa.
 Ao cadastrar um colaborador é possível informar todas as competências profissionais do mesmo, como por exemplo o nível de conhecimento em node.js, vue.js, Photoshop e etc.
