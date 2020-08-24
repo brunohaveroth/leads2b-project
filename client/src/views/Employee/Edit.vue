@@ -32,7 +32,7 @@
         </li>
 
         <li class="list-group-item text-right">
-          <router-link :to="{ name: 'EmployeeShow', params: { id: employee.id }}" class="btn btn-outline-primary ml-3">
+          <router-link :to="{ name: 'EmployeeShowSkill' }" class="btn btn-outline-primary ml-3">
             Voltar
           </router-link>
 

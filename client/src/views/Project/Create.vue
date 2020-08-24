@@ -19,7 +19,7 @@
         </li>
 
         <li class="list-group-item text-right">
-          <router-link :to="{ name: 'ProjectShow' }" class="btn btn-outline-primary ml-3">
+          <router-link :to="{ name: 'ProjectShowSkill' }" class="btn btn-outline-primary ml-3">
             Voltar
           </router-link>
 
