@@ -35,8 +35,8 @@ Acessar  http://localhost:8080.
 ### Server
 `cd leads2b-project/server`
 
-`npm install
-`
+`npm install`
+
 `node app.js`
 
 Server disponível em  http://localhost:3000.
