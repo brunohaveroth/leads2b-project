@@ -10,7 +10,7 @@
 
         <li class="p-3 text-left font-weight-bold">
           <router-link to="/employee">
-            <font-awesome-icon icon="users" /> Empregados
+            <font-awesome-icon icon="users" /> Colaboradores
           </router-link>
         </li>
 
