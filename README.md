@@ -8,7 +8,7 @@ Ao cadastrar um colaborador é possível informar todas as competências profiss
 
 Durante as etapas de cadastro também é possível adicionar uma escala de 1 até 10 ao nível de conhecimento do colaborador em cada competência profissional informada.
 
-No cadastro de projetos também é possível informar quais competências os profissionais participantes devem possuir. Desta forma, o sistema dará sugestões de colaboradores ideais na hora de adicionar participantes no projeto.
+No cadastro de projetos também é possível informar quais competências os profissionais participantes devem possuir. Desta forma, o sistema dará sugestões de colaboradores ideais na hora de adicionar participantes ao projeto.
 
 ## Instalação
 `git clone <repository-url>`
