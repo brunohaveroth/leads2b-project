@@ -9,7 +9,7 @@
             <font-awesome-icon icon="edit" />
           </router-link>
 
-          <button type="button" class="btn btn-link py-0 text-danger" @click="removeEmployee">
+          <button type="button" class="btn btn-link py-0 text-danger" @click="removeProject">
             <font-awesome-icon icon="trash" />
           </button>
         </div>
@@ -60,10 +60,24 @@ export default {
       this.$store.dispatch('project/findOne', this.$route.params.id);
     },
 
-    async removeEmployee() {
+    async removeProject() {
       try {
+        let { value } = await this.$swal.fire({
+          icon: 'info',
+          title: 'Deseja remover este projeto?',
+          text: 'Todos os registros associados a ele serão removidos',
+          showCancelButton: true,
+          focusConfirm: false,
+          confirmButtonText: 'Sim',
+          cancelButtonText: 'Não'
+        });
+
+        if (!value) { return; }
+
         await this.$store.dispatch('project/destroy', this.$route.params.id);
         this.$router.push(`/project`);
+
+        return this.$swal.fire('O projeto foi removido');
       } catch (e) {
         return this.$swal.fire({
           icon: 'error',

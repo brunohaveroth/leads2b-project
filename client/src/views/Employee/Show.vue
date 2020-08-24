@@ -60,8 +60,22 @@ export default {
 
     async removeEmployee() {
       try {
+        let { value } = await this.$swal.fire({
+          icon: 'info',
+          title: 'Deseja remover este colaborador?',
+          text: 'Todos os registros associados a ele serão removidos',
+          showCancelButton: true,
+          focusConfirm: false,
+          confirmButtonText: 'Sim',
+          cancelButtonText: 'Não'
+        });
+
+        if (!value) { return; }
+
         await this.$store.dispatch('employee/destroy', this.$route.params.id);
         this.$router.push(`/employee`);
+
+        return this.$swal.fire('O colaborador foi removido');
       } catch (e) {
         return this.$swal.fire({
           icon: 'error',
