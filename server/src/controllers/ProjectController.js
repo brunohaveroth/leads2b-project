@@ -1,4 +1,10 @@
-const { Employee, Project, ParticipantOnProject, sequelize } = require('../models/loader');
+const {
+  Employee,
+  Project,
+  ParticipantOnProject,
+  ProjectSkill,
+  sequelize
+} = require('../models/loader');
 
 const ProjectController = {
   async find (req, res) {
@@ -61,11 +67,28 @@ const ProjectController = {
   },
 
   async destroy (req, res) {
+    const { id } = req.params;
+    const { company } = req.user;
+
     try {
+      // Remove as dependências
+      await Promise.all([
+        ProjectSkill.destroy({
+          where: {
+            project: id,
+            company
+          }
+        }),
+        ParticipantOnProject.destroy({
+          where: { project: id }
+        })
+      ]);
+
+      // Remove o projeto
       await Project.destroy({
         where: {
-          id: req.params.id,
-          company: req.user.company
+          id: id,
+          company
         }
       });
 

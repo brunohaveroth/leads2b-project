@@ -78,7 +78,8 @@ export default {
       } catch (e) {
         return this.$swal.fire({
           icon: 'error',
-          title: 'Falha ao cadastrar skill'
+          title: 'Falha ao cadastrar skill',
+          text: 'Não é possível adicionar duas competências iguais'
         });
       }
     }
